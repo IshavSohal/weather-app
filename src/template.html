@@ -1,11 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Testing out deploy scripts
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather App</title>
+    </head>
+    <body>
+        <div id="input-form">
+            <label>
+                <input type="text" placeholder="Send location" id="location" />
+            </label>
+            <button id="submit">Submit</button>
+        </div>
+        <div id="loading-spinner"></div>
+        <div id="weather-info">
+            <div class="currentWeatherShort">
+                <h2 class="locationName">Brampton, Ontario</h2>
+                <h3>2025-07-31 (Today)</h3>
+                <div class="temperature">24</div>
+                <div class="description">Mostly Cloudy</div>
+            </div>
+            <div class="alerts">
+                <h3>Alerts</h3>
+                <div class="alert">
+                    <h4>Heat warning in effect</h4>
+                    <div>(Ends in 45 minutes)</div>
+                </div>
+                <div class="alert">
+                    <h4>Heat warning in effect</h4>
+                    <div>(Ends in 45 minutes)</div>
+
+                    <!-- <div class="description">
+                        "Daytime high temperatures near 30 degrees Celsius with overnight low temperatures ranging
+                        between 14 to 18 degrees Celsius are expected through the rest of this week.
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="currentWeatherLong">
+                <div class="description">Partly cloudy conditions expected aroung 11pm.</div>
+                <div class="hourlyForecast">
+                    <div class="weatherData">
+                        <div class="time">10pm</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">11pm</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">12am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">1am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                    <div class="weatherData">
+                        <div class="time">2am</div>
+                        <div class="icon">Cloud</div>
+                        <div class="temperature">19</div>
+                    </div>
+                </div>
+            </div>
+            <div class="longTermForecast">
+                <h3>15 day forecast</h3>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+                <div class="dayForecast">
+                    <div class="day">Friday</div>
+                    <div class="icon">Cloud</div>
+                    <div class="low">Low: 14</div>
+                    <div class="high">High: 24</div>
+                </div>
+            </div>
+            <div class="extraDetails"></div>
+        </div>
+    </body>
 </html>

@@ -11,14 +11,12 @@
 }
 
 html {
-  width: 100%;
-  height: 100%;
   line-height: 1.5;
 }
 
 body {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   font-family:
     system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -108,4 +106,140 @@ tr:nth-child(even) td {
 
 tr:nth-child(odd) td {
   background-color: rgb(240, 240, 240);
+}
+
+body{
+  background-image: url('./images/sunny.jpg');
+  background-size: cover;
+  background-repeat: no-repeat; 
+  background-position: center center; /* Centers the image horizontally and vertically */
+  z-index: -1;
+  overflow: auto
+}
+
+#input-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}
+
+#location{
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#submit{
+  border-radius: 15px;
+  padding: 10px;
+  padding-inline: 25px;
+  transition: 200ms;
+}
+
+#submit:hover{
+ background-color: rgb(184, 176, 176);  
+}
+
+#weather-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.locationName{
+  font-size: 20px;
+}
+
+.currentWeatherShort{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: lightblue;
+  gap: 5px;
+}
+
+.currentWeatherShort > .temperature{
+  font-size: 40px;
+}
+
+.alerts{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  max-width: 75%;
+  border-radius: 20px;
+  background-color: lightblue;
+}
+
+.alerts > h3{
+  margin-bottom: 10px;
+}
+
+.alert{
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+
+.currentWeatherLong{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: lightblue;
+}
+
+.hourlyForecast{
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  padding: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-top: 1px solid black;
+  margin-top: 10px;
+  scrollbar-width: thin;
+   scrollbar-color: gray lightblue
+}
+
+.weatherData{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+}
+
+.longTermForecast{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 10px;
+  background-color: lightblue;
+}
+
+.dayForecast{
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid black;
+  padding: 12px;
 }
