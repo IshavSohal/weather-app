@@ -1,3 +1,3 @@
-# template-repo
+# weather-app
 
-A template repo for vanilla JS projects
+A simple and intuitive weather app, built using vanilla JS
