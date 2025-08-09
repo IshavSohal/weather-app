@@ -38,14 +38,6 @@ p {
   text-wrap: pretty;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
 
 /* Avoid text overflows */
 p,
@@ -109,7 +101,7 @@ tr:nth-child(odd) td {
 }
 
 body{
-  background-image: url('./images/sunny.jpg');
+  background-image: url('./images/clear-day.jpg');
   background-size: cover;
   background-repeat: no-repeat; 
   background-position: center center; /* Centers the image horizontally and vertically */
@@ -139,6 +131,7 @@ body{
 
 #submit:hover{
  background-color: rgb(184, 176, 176);  
+ cursor: pointer;
 }
 
 #weather-info{
@@ -178,7 +171,7 @@ body{
   align-items: center;
   padding: 20px;
   gap: 10px;
-  max-width: 75%;
+  max-width: 50%;
   border-radius: 20px;
   background-color: lightblue;
 }
@@ -188,22 +181,30 @@ body{
 }
 
 .alert{
-  display: flex;
-  align-items: center;
-  gap: 10px
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 10px;
+  transition: 200ms;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.alert:hover{
+ background-color: rgb(184, 176, 176);  
+ cursor: pointer;
 }
 
 
-.currentWeatherLong{
+.horizontalDataContainer{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   padding: 20px;
   border-radius: 20px;
   background-color: lightblue;
 }
 
-.hourlyForecast{
+.horizontalData{
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
@@ -217,7 +218,7 @@ body{
   border-top: 1px solid black;
   margin-top: 10px;
   scrollbar-width: thin;
-   scrollbar-color: gray lightblue
+  scrollbar-color: gray lightblue
 }
 
 .weatherData{
@@ -225,21 +226,33 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 40px;
+  gap: 10px
 }
 
 .longTermForecast{
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
-  gap: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  padding: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-top: 1px solid black;
+  margin-top: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: gray lightblue;
+  width: 75%;
   background-color: lightblue;
 }
 
 .dayForecast{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
-  border-bottom: 1px solid black;
-  padding: 12px;
 }
+
