@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { alertModal } from "./alertModal";
 
 const sameDay = (date1, date2) => {
     return (
@@ -68,15 +69,22 @@ export const weatherInfo = async (data) => {
 
             const alertEnd = document.createElement("div");
             const alertEndDate = new Date(alertData.endsEpoch * 1000);
+            console.log("alert enddate");
+            console.log(alertEndDate);
             if (sameDay(date, alertEndDate)) {
                 const minutesLeft = alertEndDate.getMinutes() - date.getMinutes();
                 const hoursLeft = alertEndDate.getHours() - date.getHours() - (minutesLeft < 0 ? 1 : 0);
                 const hoursLeftText = hoursLeft > 0 ? `${hoursLeft} hours and` : "";
                 alertEnd.textContent = `Ends in ${hoursLeftText} ${Math.abs(minutesLeft)} minutes`;
             } else {
-                alertEnd.textContent = `Ends on ${daysOfWeekLong[alertEndDate.getDays()]}`;
+                alertEnd.textContent = `Ends on ${daysOfWeekLong[alertEndDate.getDay()]}`;
             }
             alert.appendChild(alertEnd);
+
+            alert.addEventListener("click", () => {
+                const modal = alertModal(alertData);
+                modal.showModal();
+            });
 
             alerts.appendChild(alert);
         }

@@ -122,14 +122,14 @@ body{
   border-radius: 10px;
 }
 
-#submit{
+button{
   border-radius: 15px;
   padding: 10px;
   padding-inline: 25px;
   transition: 200ms;
 }
 
-#submit:hover{
+button:hover{
  background-color: rgb(184, 176, 176);  
  cursor: pointer;
 }
@@ -256,3 +256,23 @@ body{
   gap: 10px;
 }
 
+dialog.alertModal{
+  /* display: flex;
+  flex-direction: column; */
+  /* gap: 20px; */
+  border-radius: 20px;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 10%;
+  padding: 30px;
+  border: none;
+}
+
+dialog.alertModal > h1, dialog.alertModal > h2, dialog.alertModal > div{
+  padding: 10px;
+}
+
+dialog.alertModal .closeButtonContainer{
+  display: flex;
+  justify-content: end;
+}
