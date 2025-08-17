@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { alertModal } from "./alertModal";
+import { extraDetails } from "./components/extraDetails";
 
 const sameDay = (date1, date2) => {
     return (
@@ -14,6 +15,8 @@ export const weatherInfo = async (data) => {
     console.log("data");
     console.log(data);
     const date = new Date(data.currentConditions.datetimeEpoch * 1000);
+    console.log("date");
+    console.log(date);
     const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
     const daysOfWeekLong = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -107,9 +110,9 @@ export const weatherInfo = async (data) => {
     // Gets current hour based on the timezone of the requested location
     let currHour = date.toLocaleString("en-US", { timeZone: data.timezone }).split(",").at(-1).trim();
     if (currHour.includes("AM")) {
-        currHour = +currHour[0];
+        currHour = +currHour.split(":")[0];
     } else {
-        currHour = +currHour[0] + 12; // needs to be in 24 hour format
+        currHour = +currHour.split(":")[0] + 12; // needs to be in 24 hour format
     }
 
     console.log("currHOur");
@@ -205,7 +208,11 @@ export const weatherInfo = async (data) => {
     }
     longTermForecastContainer.appendChild(longTermForecast);
     weatherInfoDiv.appendChild(longTermForecastContainer);
+
     // TODO: Add extra div
+    const extra = await extraDetails(data.currentConditions);
+
+    weatherInfoDiv.appendChild(extra);
 
     document.body.appendChild(weatherInfoDiv);
 };

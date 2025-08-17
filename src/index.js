@@ -67,4 +67,4 @@ const processWeatherData = (data) => {
     // });
 };
 
-getWeatherData("Brampton");
+// getWeatherData("Brampton");
