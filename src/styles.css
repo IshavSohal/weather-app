@@ -273,6 +273,14 @@ dialog.alertModal .closeButtonContainer{
   grid-area: humidity;
 }
 
+.humidityContent, .visibilityContent, .moonCycleContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  height:100%;
+}
+
 .wind{
   grid-area: wind;
 }
@@ -307,10 +315,9 @@ dialog.alertModal .closeButtonContainer{
 
 }
 
-.extraDetails > div > h2{
+/* .extraDetails > div > h2{
   margin-bottom: 20px;
-
-}
+} */
 
 .uvInfo{
   width: 100%;
@@ -371,7 +378,7 @@ dialog.alertModal .closeButtonContainer{
   transform-origin: top center;
   width: 0; height: 0;
   border-style: solid;
-  border-width: 40px 10px 0 10px;
+  border-width: 60px 8px 0 8px;
   border-color: gray transparent transparent transparent;
   z-index: 1;
   transition: transform 0.2s ease;

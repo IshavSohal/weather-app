@@ -60,13 +60,17 @@ export const extraDetails = async (currentConditions) => {
     humidityTitle.textContent = "Humidity";
     humidity.appendChild(humidityTitle);
 
+    const humidityContent = document.createElement("div");
+    humidityContent.setAttribute("class", "humidityContent");
+
     const humidityValue = document.createElement("h2");
     humidityValue.textContent = `${currentConditions.humidity}%`;
-    humidity.appendChild(humidityValue);
+    humidityContent.appendChild(humidityValue);
 
     const dewPoint = document.createElement("div");
     dewPoint.textContent = `Dew point is ${currentConditions.dew}°C right now`;
-    humidity.appendChild(dewPoint);
+    humidityContent.appendChild(dewPoint);
+    humidity.appendChild(humidityContent);
 
     extraDetails.appendChild(humidity);
 
@@ -118,9 +122,12 @@ export const extraDetails = async (currentConditions) => {
     visibilityTitle.textContent = "Visibility";
     visibility.appendChild(visibilityTitle);
 
+    const visibilityContent = document.createElement("div");
+    visibilityContent.setAttribute("class", "visibilityContent");
+
     const visiblityValue = document.createElement("h2");
     visiblityValue.textContent = `${currentConditions.visibility}km`;
-    visibility.appendChild(visiblityValue);
+    visibilityContent.appendChild(visiblityValue);
 
     const visibilityDesc = document.createElement("div");
     visibilityDesc.textContent =
@@ -129,7 +136,8 @@ export const extraDetails = async (currentConditions) => {
             : currentConditions.visibility > 10
               ? "Clear view"
               : "Poor visibility";
-    visibility.appendChild(visibilityDesc);
+    visibilityContent.appendChild(visibilityDesc);
+    visibility.appendChild(visibilityContent);
 
     extraDetails.appendChild(visibility);
 
@@ -155,14 +163,18 @@ export const extraDetails = async (currentConditions) => {
     moonCycleTitle.textContent = "Moon Cycle";
     moonCycle.appendChild(moonCycleTitle);
 
+    const moonCycleContainer = document.createElement("div");
+    moonCycleContainer.setAttribute("class", "moonCycleContainer");
+
     const moonCycleImg = document.createElement("h2");
     moonCycleImg.textContent = Moon.lunarPhaseEmoji();
     moonCycleImg.style.fontSize = "60px";
-    moonCycle.appendChild(moonCycleImg);
+    moonCycleContainer.appendChild(moonCycleImg);
 
     const moonCycleDesc = document.createElement("div");
     moonCycleDesc.textContent = Moon.lunarPhase();
-    moonCycle.appendChild(moonCycleDesc);
+    moonCycleContainer.appendChild(moonCycleDesc);
+    moonCycle.appendChild(moonCycleContainer);
 
     extraDetails.appendChild(moonCycle);
 
@@ -180,7 +192,7 @@ export const extraDetails = async (currentConditions) => {
     const sunriseSvg = await import(`../icons/sunrise.svg`);
     sunriseImg.src = sunriseSvg.default;
     sunriseContainer.appendChild(sunriseImg);
-    const sunriseTimeDiv = document.createElement("div");
+    const sunriseTimeDiv = document.createElement("h3");
     const sunriseTimeArray = currentConditions.sunrise.split(":");
     sunriseTimeDiv.textContent = `${sunriseTimeArray[0].slice(1)}:${sunriseTimeArray[1]} AM`; // Assuming that sunrise is before 10AM
     sunriseContainer.appendChild(sunriseTimeDiv);
@@ -192,7 +204,7 @@ export const extraDetails = async (currentConditions) => {
     const sunsetSvg = await import(`../icons/sunset.svg`);
     sunsetImg.src = sunsetSvg.default;
     sunsetContainer.appendChild(sunsetImg);
-    const sunsetTimeDiv = document.createElement("div");
+    const sunsetTimeDiv = document.createElement("h3");
     const sunsetTimeArray = currentConditions.sunset.split(":");
     sunsetTimeDiv.textContent = `${sunsetTimeArray[0] - 12}:${sunsetTimeArray[1]} PM`; // Assuming sunset is between 1pm and 11:59pm (inclusive)
     sunsetContainer.appendChild(sunsetTimeDiv);
