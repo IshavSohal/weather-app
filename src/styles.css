@@ -171,7 +171,7 @@ button:hover{
   align-items: center;
   padding: 20px;
   gap: 10px;
-  max-width: 50%;
+  width: 50%;
   border-radius: 20px;
   background-color: lightblue;
 }
@@ -238,13 +238,10 @@ button:hover{
 }
 
 dialog.alertModal{
-  /* display: flex;
-  flex-direction: column; */
-  /* gap: 20px; */
   border-radius: 20px;
-  width: 60%;
-  margin-left: 20%;
-  margin-top: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 1%;
   padding: 30px;
   border: none;
 }
@@ -260,7 +257,7 @@ dialog.alertModal .closeButtonContainer{
 
 .extraDetails {
   display: grid;
-  grid-template-areas: "uvIndex uvIndex humidity airPressure" "wind moonCycle sunRiseSet visibility";
+  grid-template-areas: "uvIndex uvIndex humidity airPressure" "wind moonCycle visibility sunRiseSet";
   gap: 10px;
   width: 80%;
 }
@@ -350,13 +347,14 @@ dialog.alertModal .closeButtonContainer{
 
 .windContainer{
   display: flex;
-  gap: 30px
+  gap: 20px
 }
 
 .windInfo{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 5px;
 }
 
 
@@ -388,4 +386,68 @@ dialog.alertModal .closeButtonContainer{
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.sunrise{
+  margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 940px) {
+  .horizontalDataContainer {
+    width: 90%;
+  }
+
+  .extraDetails {
+    /* grid-template-areas: "uvIndex uvIndex humidity airPressure" "wind moonCycle sunRiseSet visibility";
+    gap: 10px; */
+    width: 90%;
+  }
+
+  .sunrise, .sunset{
+    gap: 15px;
+  }
+
+  .windContainer {
+    gap: 10px;
+  }
+
+  .alerts{
+    width: 70%;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .extraDetails {
+    grid-template-areas: "uvIndex uvIndex humidity" "airPressure wind wind" "moonCycle visibility sunRiseSet";
+  }
+
+  .sunrise, .sunset{
+    gap: 10px;
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+
+  .extraDetails {
+    grid-template-areas: "uvIndex uvIndex" "humidity wind" "airPressure moonCycle" " visibility sunRiseSet" ;
+
+  }
+
+  .alerts{
+    width: 80%;
+  }
+
+}
+
+@media screen and (max-width: 460px) {
+
+  .extraDetails {
+    grid-template-areas: "uvIndex uvIndex" "humidity airPressure" "wind wind"  "moonCycle visibility" "sunRiseSet sunRiseSet" ;
+
+  }
+
 }
