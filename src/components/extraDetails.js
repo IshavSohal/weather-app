@@ -91,7 +91,7 @@ export const extraDetails = async (currentConditions) => {
     windSpeed.textContent = `Wind: ${currentConditions.windspeed}km/hr`;
     windInfo.appendChild(windSpeed);
     const gustSpeed = document.createElement("div");
-    gustSpeed.textContent = `Wind: ${currentConditions.windgust}km/hr`;
+    gustSpeed.textContent = `Gust: ${currentConditions.windgust}km/hr`;
     windInfo.appendChild(gustSpeed);
     const windDir = document.createElement("div");
     windDir.textContent = `Direction: ${currentConditions.winddir}°`;
