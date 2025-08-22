@@ -103,7 +103,6 @@ tr:nth-child(odd) td {
 }
 
 body{
-  background-image: url('./images/clear-day.jpg');
   background-size: cover;
   background-repeat: no-repeat; 
   background-position: center center; /* Centers the image horizontally and vertically */
@@ -468,6 +467,10 @@ dialog.alertModal .closeButtonContainer{
 
   #submit{
     padding-inline: 10px;
+  }
+
+  #weather-info{
+    padding: 10px;
   }
 
 }
