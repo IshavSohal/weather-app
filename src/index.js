@@ -1,4 +1,4 @@
-import { weatherInfo } from "./weatherInfo";
+import { weatherInfo } from "./components/weatherInfo";
 import "./styles.css";
 
 const API_KEY = "G35A7KUSNGHMNNDQGXVDVNWBH"; // free tier, nice try lol

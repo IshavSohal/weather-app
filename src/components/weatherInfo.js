@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { alertModal } from "./components/alertModal";
-import { extraDetails } from "./components/extraDetails";
+import { alertModal } from "./alertModal";
+import { extraDetails } from "./extraDetails";
 
 const sameDay = (date1, date2) => {
     return (
@@ -43,7 +43,7 @@ export const weatherInfo = async (data) => {
         document.body.style.backgroundImage = `url('${backgroundImg.default}')`;
     }
 
-    // TODO: Add currentWeatherShort div
+    // Add currentWeatherShort div
     const currentWeatherShort = document.createElement("div");
     currentWeatherShort.setAttribute("class", "currentWeatherShort");
 
@@ -203,7 +203,6 @@ export const weatherInfo = async (data) => {
 
     // Add extra div
     const extra = await extraDetails(data.currentConditions);
-
     weatherInfoDiv.appendChild(extra);
 
     document.body.appendChild(weatherInfoDiv);
