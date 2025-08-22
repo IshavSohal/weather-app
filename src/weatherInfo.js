@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { alertModal } from "./alertModal";
+import { alertModal } from "./components/alertModal";
 import { extraDetails } from "./components/extraDetails";
 
 const sameDay = (date1, date2) => {
@@ -12,11 +12,8 @@ const sameDay = (date1, date2) => {
 
 // Component for displaying weather data
 export const weatherInfo = async (data) => {
-    console.log("data");
-    console.log(data);
     const date = new Date(data.currentConditions.datetimeEpoch * 1000);
-    console.log("date");
-    console.log(date);
+
     // Gets current hour based on the timezone of the requested location
     const currHour = data.currentConditions.datetime.split(":")[0];
     const sunriseHour = data.currentConditions.sunrise.split(":")[0];
@@ -27,10 +24,6 @@ export const weatherInfo = async (data) => {
     weatherInfoDiv.innerHTML = "";
 
     const timeOfDay = +currHour >= sunsetHour || +currHour < sunriseHour ? "night" : "day";
-    console.log("time of day");
-    console.log(timeOfDay);
-    console.log("current conditions");
-    console.log(data.currentConditions.conditions.toLowerCase());
     const conditions = data.currentConditions.conditions.toLowerCase().includes("clear")
         ? "clear"
         : data.currentConditions.conditions.toLowerCase().includes("rain")
@@ -47,7 +40,6 @@ export const weatherInfo = async (data) => {
         document.body.style.backgroundImage = `url('${rainImg.default}')`;
     } else {
         const backgroundImg = await import(`./images/${conditions}-${timeOfDay}.jpg`);
-        console.log(`url('./images/${conditions}-${timeOfDay}.jpg')`);
         document.body.style.backgroundImage = `url('${backgroundImg.default}')`;
     }
 
@@ -69,8 +61,6 @@ export const weatherInfo = async (data) => {
     const currTemperature = document.createElement("div");
     currTemperature.setAttribute("class", "temperature");
     currTemperature.textContent = `${Math.round(data.currentConditions.temp)}°C`;
-    console.log("curr temp");
-    console.log(currTemperature);
     currentWeatherShort.appendChild(currTemperature);
 
     const currConditions = document.createElement("div");
@@ -99,8 +89,6 @@ export const weatherInfo = async (data) => {
 
             const alertEnd = document.createElement("div");
             const alertEndDate = new Date(alertData.endsEpoch * 1000);
-            console.log("alert enddate");
-            console.log(alertEndDate);
             if (sameDay(date, alertEndDate)) {
                 const minutesLeft = alertEndDate.getMinutes() - date.getMinutes();
                 const hoursLeft = alertEndDate.getHours() - date.getHours() - (minutesLeft < 0 ? 1 : 0);
@@ -136,7 +124,6 @@ export const weatherInfo = async (data) => {
 
     hoursData.push(...data.days[0].hours.slice(currHour));
     hoursData.push(...data.days[1].hours.slice(0, 24 - hoursData.length));
-    console.log(hoursData);
 
     for (let i = 0; i < hoursData.length; i++) {
         const hourData = hoursData[i];
@@ -160,17 +147,12 @@ export const weatherInfo = async (data) => {
         hourIcon.style.width = "35px";
         hourIcon.style.height = "35px";
         const iconSvg = await import(`./icons/${hourData.icon}.svg`);
-        console.log("iconSvg");
-        console.log(iconSvg);
         hourIcon.src = iconSvg.default;
         weatherData.appendChild(hourIcon);
 
         const hourTemperature = document.createElement("div");
         hourTemperature.textContent = `${Math.round(hourData.temp)}°C`;
         weatherData.appendChild(hourTemperature);
-
-        console.log("weatherData");
-        console.log(weatherData);
 
         hourlyForecast.appendChild(weatherData);
     }
@@ -196,10 +178,6 @@ export const weatherInfo = async (data) => {
         dayForecast.setAttribute("class", "dayForecast");
 
         const dayOfWeek = document.createElement("div");
-
-        console.log("day");
-        console.log(dayData);
-        console.log(new Date(dayData.datetimeEpoch * 1000).getDay());
         dayOfWeek.textContent = daysOfWeek[new Date(dayData.datetimeEpoch * 1000).getDay()];
         dayForecast.appendChild(dayOfWeek);
 
@@ -207,8 +185,6 @@ export const weatherInfo = async (data) => {
         dayIcon.style.height = "35px";
         dayIcon.style.width = "35px";
         const iconSvg = await import(`./icons/${dayData.icon}.svg`);
-        console.log("iconSvg");
-        console.log(iconSvg);
         dayIcon.src = iconSvg.default;
         dayForecast.appendChild(dayIcon);
 
