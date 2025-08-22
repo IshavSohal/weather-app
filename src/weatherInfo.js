@@ -29,15 +29,17 @@ export const weatherInfo = async (data) => {
     const timeOfDay = +currHour >= sunsetHour || +currHour < sunriseHour ? "night" : "day";
     console.log("time of day");
     console.log(timeOfDay);
+    console.log("current conditions");
+    console.log(data.currentConditions.conditions.toLowerCase());
     const conditions = data.currentConditions.conditions.toLowerCase().includes("clear")
         ? "clear"
-        : data.currentConditions.conditions.toLowerCase().includes("partial")
-          ? "partly-cloudy"
-          : data.currentConditions.conditions.toLowerCase().includes("cloud") ||
-              data.currentConditions.conditions.toLowerCase().includes("overcast")
-            ? "cloudy"
-            : data.currentConditions.conditions.toLowerCase().includes("rain")
-              ? "rain"
+        : data.currentConditions.conditions.toLowerCase().includes("rain")
+          ? "rain"
+          : data.currentConditions.conditions.toLowerCase().includes("partial")
+            ? "partly-cloudy"
+            : data.currentConditions.conditions.toLowerCase().includes("cloud") ||
+                data.currentConditions.conditions.toLowerCase().includes("overcast")
+              ? "cloudy"
               : "clear";
 
     if (conditions === "rain") {
