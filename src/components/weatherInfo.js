@@ -36,10 +36,10 @@ export const weatherInfo = async (data) => {
               : "clear";
 
     if (conditions === "rain") {
-        const rainImg = await import(`./images/rain.jpg`);
+        const rainImg = await import(`../images/rain.jpg`);
         document.body.style.backgroundImage = `url('${rainImg.default}')`;
     } else {
-        const backgroundImg = await import(`./images/${conditions}-${timeOfDay}.jpg`);
+        const backgroundImg = await import(`../images/${conditions}-${timeOfDay}.jpg`);
         document.body.style.backgroundImage = `url('${backgroundImg.default}')`;
     }
 
@@ -146,7 +146,7 @@ export const weatherInfo = async (data) => {
         const hourIcon = document.createElement("img");
         hourIcon.style.width = "35px";
         hourIcon.style.height = "35px";
-        const iconSvg = await import(`./icons/${hourData.icon}.svg`);
+        const iconSvg = await import(`../icons/${hourData.icon}.svg`);
         hourIcon.src = iconSvg.default;
         weatherData.appendChild(hourIcon);
 
@@ -184,7 +184,7 @@ export const weatherInfo = async (data) => {
         const dayIcon = document.createElement("img");
         dayIcon.style.height = "35px";
         dayIcon.style.width = "35px";
-        const iconSvg = await import(`./icons/${dayData.icon}.svg`);
+        const iconSvg = await import(`../icons/${dayData.icon}.svg`);
         dayIcon.src = iconSvg.default;
         dayForecast.appendChild(dayIcon);
 
