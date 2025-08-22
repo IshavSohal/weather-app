@@ -17,13 +17,36 @@ export const weatherInfo = async (data) => {
     const date = new Date(data.currentConditions.datetimeEpoch * 1000);
     console.log("date");
     console.log(date);
+    // Gets current hour based on the timezone of the requested location
+    const currHour = data.currentConditions.datetime.split(":")[0];
+    const sunriseHour = data.currentConditions.sunrise.split(":")[0];
+    const sunsetHour = data.currentConditions.sunset.split(":")[0];
     const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
     const daysOfWeekLong = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
     const weatherInfoDiv = document.querySelector("#weather-info");
     weatherInfoDiv.innerHTML = "";
 
-    // Set background of document based on weather and time of day
+    const timeOfDay = +currHour >= sunsetHour || +currHour < sunriseHour ? "night" : "day";
+    console.log("time of day");
+    console.log(timeOfDay);
+    const conditions = data.currentConditions.conditions.includes("clear")
+        ? "clear"
+        : data.currentConditions.conditions.includes("Partial")
+          ? "partly-cloudy"
+          : data.currentConditions.conditions.includes("cloud")
+            ? "cloudy"
+            : data.currentConditions.conditions.includes("rain")
+              ? "rain"
+              : "clear";
+
+    if (conditions === "rain") {
+        const rainImg = await import(`./images/rain.jpg`);
+        document.body.style.backgroundImage = `url('${rainImg.default}')`;
+    } else {
+        const backgroundImg = await import(`./images/${conditions}-${timeOfDay}.jpg`);
+        console.log(`url('./images/${conditions}-${timeOfDay}.jpg')`);
+        document.body.style.backgroundImage = `url('${backgroundImg.default}')`;
+    }
 
     // TODO: Add currentWeatherShort div
     const currentWeatherShort = document.createElement("div");
@@ -31,6 +54,7 @@ export const weatherInfo = async (data) => {
 
     const locationName = document.createElement("h2");
     locationName.setAttribute("class", "locationName");
+    locationName.style.textAlign = "center";
     locationName.textContent = data.resolvedAddress[0].toUpperCase() + data.resolvedAddress.slice(1);
     currentWeatherShort.appendChild(locationName);
 
@@ -52,7 +76,7 @@ export const weatherInfo = async (data) => {
 
     weatherInfoDiv.appendChild(currentWeatherShort);
 
-    // TODO: Add alerts div, if there are any alerts to display
+    // Add alerts div, if there are any alerts to display
     if (data.alerts.length > 0) {
         const alerts = document.createElement("div");
         alerts.setAttribute("class", "alerts");
@@ -94,7 +118,7 @@ export const weatherInfo = async (data) => {
         weatherInfoDiv.appendChild(alerts);
     }
 
-    // TODO: Add currentWeatherLong div
+    // Add currentWeatherLong div
     const currWeatherLong = document.createElement("div");
     currWeatherLong.setAttribute("class", "horizontalDataContainer");
 
@@ -106,17 +130,6 @@ export const weatherInfo = async (data) => {
     hourlyForecast.setAttribute("class", "horizontalData");
 
     let hoursData = [];
-
-    // Gets current hour based on the timezone of the requested location
-    let currHour = date.toLocaleString("en-US", { timeZone: data.timezone }).split(",").at(-1).trim();
-    if (currHour.includes("AM")) {
-        currHour = +currHour.split(":")[0];
-    } else {
-        currHour = +currHour.split(":")[0] + 12; // needs to be in 24 hour format
-    }
-
-    console.log("currHOur");
-    console.log(currHour);
 
     hoursData.push(...data.days[0].hours.slice(currHour));
     hoursData.push(...data.days[1].hours.slice(0, 24 - hoursData.length));
@@ -162,7 +175,7 @@ export const weatherInfo = async (data) => {
 
     weatherInfoDiv.appendChild(currWeatherLong);
 
-    // TODO: Add longTermForecast div
+    // Add longTermForecast div
     const longTermForecastContainer = document.createElement("div");
     longTermForecastContainer.setAttribute("class", "horizontalDataContainer");
 
@@ -209,7 +222,7 @@ export const weatherInfo = async (data) => {
     longTermForecastContainer.appendChild(longTermForecast);
     weatherInfoDiv.appendChild(longTermForecastContainer);
 
-    // TODO: Add extra div
+    // Add extra div
     const extra = await extraDetails(data.currentConditions);
 
     weatherInfoDiv.appendChild(extra);

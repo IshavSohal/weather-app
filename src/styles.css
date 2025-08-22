@@ -33,6 +33,8 @@ label {
   line-height: 1.1;
 }
 
+
+
 /* Improve line wrapping */
 p {
   text-wrap: pretty;
@@ -399,8 +401,6 @@ dialog.alertModal .closeButtonContainer{
   }
 
   .extraDetails {
-    /* grid-template-areas: "uvIndex uvIndex humidity airPressure" "wind moonCycle sunRiseSet visibility";
-    gap: 10px; */
     width: 90%;
   }
 
@@ -448,6 +448,26 @@ dialog.alertModal .closeButtonContainer{
   .extraDetails {
     grid-template-areas: "uvIndex uvIndex" "humidity airPressure" "wind wind"  "moonCycle visibility" "sunRiseSet sunRiseSet" ;
 
+  }
+
+  #location{
+    width: 40vw;
+  }
+
+  .horizontalDataContainer {
+    width: 100%;
+  }
+
+  .extraDetails {
+    width: 100%;
+  }
+
+  .alerts{
+    width: 100%;
+  }
+
+  #submit{
+    padding-inline: 10px;
   }
 
 }
